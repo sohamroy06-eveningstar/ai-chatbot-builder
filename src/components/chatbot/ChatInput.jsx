@@ -12,22 +12,55 @@ export default function ChatInput({ onSend }) {
   };
 
   return (
-    <div className="border-t border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-4">
-      <div className="mx-auto flex max-w-4xl items-center gap-3 rounded-2xl border border-gray-300 bg-white px-4 py-3 dark:border-gray-700 dark:bg-gray-900">
-        <input
+    <div
+      className="border-t px-4 py-4"
+      style={{ borderColor: "var(--border)", backgroundColor: "var(--bg)" }}
+    >
+      <div
+        className="mx-auto flex max-w-4xl items-end gap-3
+                   rounded-2xl border px-3 py-2 shadow-sm"
+        style={{
+          backgroundColor: "var(--card)",
+          borderColor: "var(--border)",
+        }}
+      >
+        {/* Text Input */}
+        <textarea
+          rows={1}
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && submit()}
-          placeholder="Ask Zics about this website..."
-          className="flex-1 bg-transparent text-sm outline-none"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              submit();
+            }
+          }}
+          placeholder="Ask Zics about this website…"
+          className="flex-1 resize-none bg-transparent
+                     px-2 py-2 text-sm leading-relaxed
+                     outline-none"
+          style={{ color: "var(--text)" }}
         />
+
+        {/* Send Button */}
         <button
           onClick={submit}
-          className="rounded-xl bg-primary px-4 py-2 text-sm text-white"
+          className="flex h-9 w-9 items-center justify-center
+                     rounded-xl text-white transition
+                     hover:opacity-90 active:scale-95"
+          style={{ backgroundColor: "var(--primary)" }}
+          aria-label="Send message"
         >
-          Send
+          ➤
         </button>
       </div>
+
+      {/* Hint */}
+      <p className="mx-auto mt-2 max-w-4xl text-xs opacity-60">
+        Press <kbd className="rounded border px-1">Enter</kbd> to send ·{" "}
+        <kbd className="rounded border px-1">Shift</kbd> +{" "}
+        <kbd className="rounded border px-1">Enter</kbd> for new line
+      </p>
     </div>
   );
 }

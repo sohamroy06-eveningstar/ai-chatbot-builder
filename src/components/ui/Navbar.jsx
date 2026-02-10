@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   return (
@@ -9,7 +8,7 @@ export default function Navbar() {
       <Link  href="/" className="text-lg font-bold md:text-xl">
         AI Chatbot Builder
       </Link>
-      <ThemeToggle />
+      
     </nav>
   );
 }

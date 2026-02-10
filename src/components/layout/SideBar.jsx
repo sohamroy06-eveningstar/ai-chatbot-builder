@@ -15,7 +15,7 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 py-5">
         <div className="flex h-9 w-9 items-center justify-center rounded-xl
-                        bg-gradient-to-br from-blue-500 to-indigo-600
+                        bg-linear-to-br from-blue-500 to-indigo-600
                         text-sm font-bold text-white">
           AI
         </div>

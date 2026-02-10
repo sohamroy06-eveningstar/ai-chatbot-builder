@@ -31,7 +31,7 @@ export default function HomePage() {
           <h1 className="max-w-3xl text-4xl font-bold tracking-tight
                          sm:text-5xl md:text-6xl">
             Build AI Chatbots
-            <span className="block bg-gradient-to-r from-primary to-indigo-500
+            <span className="block bg-linear-to-r from-primary to-indigo-500
                              bg-clip-text text-transparent">
               for Your Website
             </span>

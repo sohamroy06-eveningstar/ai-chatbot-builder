@@ -1,6 +1,4 @@
 "use client";
-
-import ThemeToggle from "../ui/ThemeToggle";
 import Link from "next/link";
 
 export default function Topbar() {
@@ -12,7 +10,7 @@ export default function Topbar() {
         {/* LOGO */}
         <div className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg 
-                          bg-gradient-to-br from-blue-500 to-indigo-600 
+                          bg-linear-to-br from-blue-500 to-indigo-600 
                           text-sm font-bold text-white">
             AI
           </div>
@@ -23,7 +21,7 @@ export default function Topbar() {
 
         {/* RIGHT ACTIONS */}
         <div className="flex items-center gap-3">
-          <ThemeToggle />
+          
         </div>
 
       </div>

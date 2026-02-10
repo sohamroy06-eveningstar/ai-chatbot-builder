@@ -90,7 +90,6 @@ function getBotAnswer(question) {
     return "The platform supports both dark mode and light mode for a better user experience.";
   }
 
-  // Fallback
   return (
     "I can help you with questions about AI Chatbot Builder, such as chatbot features, dashboard, analytics, account, or security settings."
   );
@@ -111,14 +110,21 @@ export default function ChatWindow() {
   const handleSend = (text) => {
     if (!text.trim()) return;
 
+    // 1️⃣ Add user message
     setMessages((prev) => [...prev, { role: "user", text }]);
 
-    // Simulate thinking delay
+    // 2️⃣ Add typing indicator
+    setMessages((prev) => [
+      ...prev,
+      { role: "assistant", typing: true },
+    ]);
+
+    // 3️⃣ Replace typing with real answer
     setTimeout(() => {
       const answer = getBotAnswer(text);
 
       setMessages((prev) => [
-        ...prev,
+        ...prev.slice(0, -1), // remove typing
         { role: "assistant", text: answer },
       ]);
     }, 700);
@@ -133,7 +139,12 @@ export default function ChatWindow() {
       <div className="flex-1 overflow-y-auto px-4 py-8">
         <div className="mx-auto max-w-4xl space-y-6">
           {messages.map((msg, i) => (
-            <ChatMessage key={i} role={msg.role} text={msg.text} />
+            <ChatMessage
+              key={i}
+              role={msg.role}
+              text={msg.text}
+              typing={msg.typing}
+            />
           ))}
           <div ref={bottomRef} />
         </div>
